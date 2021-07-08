@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void request(){
-        String url = "http://172.10.18.147";
+        String url = "http://172.10.18.120";
         JSONObject testjson = new JSONObject();
         try {
             String strId = edtext_id.getText().toString();
