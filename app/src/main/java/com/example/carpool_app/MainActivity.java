@@ -1,100 +1,159 @@
 package com.example.carpool_app;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.HashMap;
-import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    Button button1;
-    TextView textView1;
-    public static final String TAG = "MyRequestQueue";
-    static RequestQueue requestQueue;
+
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://172.10.18.120";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView1 = findViewById(R.id.textView1);
-        button1 = findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                //requestProcess();
+            public void onClick(View view) {
+                handleLoginDialog();
             }
         });
 
-        // RequestQueue 객체생성
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(getApplicationContext());
-        }
-    }
-
-    public void requestProcess() {
-        String url = "http://172.10.18.147/users";
-
-        StringRequest request = new StringRequest(
-                Request.Method.GET,
-                url,
-                new Response.Listener<String>() {
-                    // 요청을 보내고 응답받았을때
-                    @Override
-                    public void onResponse(String response) {
-                        println("응답 -> " + response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    // 요청보내고 에러 발생시에 호출되는 리스너
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        println("에러 -> " + error.getMessage());
-                    }
-                }
-        ) {
-
-            // POST 방식으로 요청할 경우에 전달하는 파라미터값들 지정
+        findViewById(R.id.signup).setOnClickListener(new View.OnClickListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //return super.getParams();
-                Map<String,String> params = new HashMap<String,String>();
-                return params;
+            public void onClick(View view) {
+                handleSignupDialog();
             }
-        };
-        request.setTag(TAG);
-
-        // 캐쉬기능을 끊다. 바로바로 내용처리되도록
-        request.setShouldCache(false);
-        requestQueue.add(request);
+        });
 
     }
 
-    public void println(String data) {
-        textView1.setText(data + "\n");
+    private void handleLoginDialog() {
+
+        View view = getLayoutInflater().inflate(R.layout.login_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(view).show();
+
+        Button loginBtn = view.findViewById(R.id.login);
+        final EditText emailEdit = view.findViewById(R.id.emailEdit);
+        final EditText passwordEdit = view.findViewById(R.id.passwordEdit);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("email", emailEdit.getText().toString());
+                map.put("password", passwordEdit.getText().toString());
+
+                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+
+                call.enqueue(new Callback<LoginResult>() {
+                    @Override
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+
+                        if (response.code() == 200) {
+
+                            LoginResult result = response.body();
+
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                            builder1.setTitle(result.getName());
+                            builder1.setMessage(result.getEmail());
+
+                            builder1.show();
+
+                        } else if (response.code() == 404) {
+                            Toast.makeText(MainActivity.this, "Wrong Credentials",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
     }
 
-    protected void onStop() {
-        super.onStop();
+    private void handleSignupDialog() {
 
-        if (requestQueue != null) {
-            // RequestQueue 의 TAG 값으로 지정된 Queue 안의 모든 request들을 취소한다.
-            requestQueue.cancelAll(TAG);
-        }
+        View view = getLayoutInflater().inflate(R.layout.signup_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view).show();
+
+        Button signupBtn = view.findViewById(R.id.signup);
+        final EditText nameEdit = view.findViewById(R.id.nameEdit);
+        final EditText emailEdit = view.findViewById(R.id.emailEdit);
+        final EditText passwordEdit = view.findViewById(R.id.passwordEdit);
+
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("name", nameEdit.getText().toString());
+                map.put("email", emailEdit.getText().toString());
+                map.put("password", passwordEdit.getText().toString());
+
+                Call<Void> call = retrofitInterface.executeSignup(map);
+
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                        if (response.code() == 200) {
+                            Toast.makeText(MainActivity.this,
+                                    "Signed up successfully", Toast.LENGTH_LONG).show();
+                        } else if (response.code() == 400) {
+                            Toast.makeText(MainActivity.this,
+                                    "Already registered", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
     }
 }
