@@ -1,4 +1,4 @@
-package com.example.carpool_app;
+package com.example.everyClub;
 
 import org.junit.Test;
 

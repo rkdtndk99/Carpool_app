@@ -1,8 +1,9 @@
-package com.example.carpool_app;
+package com.example.everyClub;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://172.10.18.120";
+    private String BASE_URL = "http://192.249.18.120";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(view).show();
 
         Button loginBtn = view.findViewById(R.id.login);
-        final EditText emailEdit = view.findViewById(R.id.emailEdit);
+        final EditText userIdEdit = view.findViewById(R.id.userIdEdit);
         final EditText passwordEdit = view.findViewById(R.id.passwordEdit);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                 HashMap<String, String> map = new HashMap<>();
 
-                map.put("email", emailEdit.getText().toString());
+                map.put("userId", userIdEdit.getText().toString());
                 map.put("password", passwordEdit.getText().toString());
 
                 Call<LoginResult> call = retrofitInterface.executeLogin(map);
@@ -82,11 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
                             LoginResult result = response.body();
 
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                            builder1.setTitle(result.getName());
-                            builder1.setMessage(result.getEmail());
-
-                            builder1.show();
+//                            AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+//                            builder1.setTitle(result.getName());
+//                            builder1.setMessage(result.getUserId());
+//
+//                            builder1.show();
+                            Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
+                            intent.putExtra("name", result.getName());
+                            startActivity(intent);
 
                         } else if (response.code() == 404) {
                             Toast.makeText(MainActivity.this, "Wrong Credentials",
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button signupBtn = view.findViewById(R.id.signup);
         final EditText nameEdit = view.findViewById(R.id.nameEdit);
-        final EditText emailEdit = view.findViewById(R.id.emailEdit);
+        final EditText userIdEdit = view.findViewById(R.id.userIdEdit);
         final EditText passwordEdit = view.findViewById(R.id.passwordEdit);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
 
                 map.put("name", nameEdit.getText().toString());
-                map.put("email", emailEdit.getText().toString());
+                map.put("userId", userIdEdit.getText().toString());
                 map.put("password", passwordEdit.getText().toString());
 
                 Call<Void> call = retrofitInterface.executeSignup(map);
