@@ -8,25 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.everyClub.R;
-import com.example.everyClub.data.Table;
-
+import com.example.everyClub.data.Comment;
 import java.util.List;
 
-public class TableAdapter extends BaseAdapter {
+public class CommentAdapter extends BaseAdapter {
 
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
-    List<Table> tableList;
+    List<Comment> commentList;
 
-    public TableAdapter(Context context, List<Table> data) {
+    public CommentAdapter(Context context, List<Comment> data) {
         mContext = context;
-        tableList = data;
+        commentList = data;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return tableList.size();
+        return commentList.size();
     }
 
     @Override
@@ -35,18 +34,18 @@ public class TableAdapter extends BaseAdapter {
     }
 
     @Override
-    public Table getItem(int position) {
-        return tableList.get(position);
+    public Comment getItem(int position) {
+        return commentList.get(position);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = mLayoutInflater.inflate(R.layout.table_list_item, null);
-        TextView tableTitle = (TextView)view.findViewById(R.id.table_title);
-        TextView tableContent = (TextView)view.findViewById(R.id.table_content);
+        View view = mLayoutInflater.inflate(R.layout.comment_list_item, null);
+        TextView commentName = (TextView)view.findViewById(R.id.comment_name);
+        TextView commentContent = (TextView)view.findViewById(R.id.comment_content);
 
-        tableTitle.setText(tableList.get(position).getTitle());
-        tableContent.setText(tableList.get(position).getContent());
+        commentName.setText(commentList.get(position).getName());
+        commentContent.setText(commentList.get(position).getContent());
 
         return view;
     }

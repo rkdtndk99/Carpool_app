@@ -89,6 +89,5 @@ public class TableRegisterActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }

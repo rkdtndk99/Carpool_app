@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         Button signupBtn = view.findViewById(R.id.signup);
         final EditText nameEdit = view.findViewById(R.id.nameEdit);
         final EditText userIdEdit = view.findViewById(R.id.userIdEdit);
+        final EditText userEmailEdit = view.findViewById(R.id.userEmailEdit);
         final EditText passwordEdit = view.findViewById(R.id.passwordEdit);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
                 map.put("name", nameEdit.getText().toString());
                 map.put("userId", userIdEdit.getText().toString());
+                map.put("email", userEmailEdit.getText().toString());
                 map.put("password", passwordEdit.getText().toString());
 
                 Call<Void> call = retrofitInterface.executeSignup(map);
