@@ -37,27 +37,6 @@
                     android:text="제목입니다."
                     />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="작성일"/>
-
-                <TextView
-                    android:id="@+id/date_tv"
-                    android:padding="16dp"
-                    android:background="#eeeeee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="제목입니다."
-                    />
-            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

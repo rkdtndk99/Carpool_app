@@ -20,6 +20,14 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
+<!--    <Button-->
+<!--        android:id="@+id/load_button"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#C62828"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:text="글 블러오기" />-->
+
     <Button
         android:id="@+id/reg_button"
         android:layout_width="match_parent"
