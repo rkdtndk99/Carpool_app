@@ -81,12 +81,11 @@ public class NoticeFragment extends Fragment {
                 Toast.makeText(getActivity(), adapterView.getItemAtPosition(position) + " 클릭", Toast.LENGTH_SHORT).show();
 
                 Table table = table_list.get(position);
-                NoticeFragment fragment = new NoticeFragment(name);
                 Bundle bundle = new Bundle();
                 bundle.putInt("POSITION", position);
                 bundle.putString("tableId", table.get_id());
                 bundle.putString("name", name);
-                fragment.setArguments(bundle);
+                ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
                 ((MyClubActivity)getActivity()).setFrag(7);
             }
         });

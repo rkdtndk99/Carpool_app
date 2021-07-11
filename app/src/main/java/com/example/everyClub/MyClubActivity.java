@@ -58,14 +58,6 @@ public class MyClubActivity extends AppCompatActivity {
             }
         });
 
-        setFrag(0); // 첫 프래그먼트 화면 지정
-    }
-
-    // 프레그먼트 교체
-    public void setFrag(int n)
-    {
-        fm = getSupportFragmentManager();
-        ft= fm.beginTransaction();
         nf = new NoticeFragment(name);
         ff = new FreeFragment();
         qf = new QuestionFragment();
@@ -74,6 +66,15 @@ public class MyClubActivity extends AppCompatActivity {
         nff = new NewFreeFragment();
         nqf = new NewQuestionFragment();
         ndf = new NoticeDetailFragment();
+
+        setFrag(0); // 첫 프래그먼트 화면 지정
+    }
+
+    // 프레그먼트 교체
+    public void setFrag(int n)
+    {
+        fm = getSupportFragmentManager();
+        ft= fm.beginTransaction();
         switch (n)
         {
             case 0:  //공지게시판
