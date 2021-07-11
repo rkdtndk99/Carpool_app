@@ -85,6 +85,8 @@ public class NoticeFragment extends Fragment {
                 bundle.putInt("POSITION", position);
                 bundle.putString("tableId", table.get_id());
                 bundle.putString("name", name);
+
+
                 ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
                 ((MyClubActivity)getActivity()).setFrag(7);
             }

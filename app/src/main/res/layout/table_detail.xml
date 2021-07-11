@@ -21,18 +21,18 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="제목"/>
+                android:text="제목"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/title_tv"
                 android:padding="16dp"
-                android:background="#eeeeee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="제목입니다."
-                />
+                android:text="제목입니다." />
         </LinearLayout>
+        <View style="@style/Divider"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,18 +42,19 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="작성자"/>
+                android:text="작성자"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/name_tv"
                 android:padding="16dp"
-                android:background="#eeeeee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="작성자입니다..."
                 />
         </LinearLayout>
+        <View style="@style/Divider"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,39 +64,35 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="작성일"/>
+                android:text="작성일"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/date_tv"
                 android:padding="16dp"
-                android:background="#eeeeee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="작성일입니다.."
                 />
         </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="내용"/>
+        <View style="@style/Divider"/>
 
         <TextView
             android:id="@+id/content_tv"
             android:padding="16dp"
-            android:background="#eeeeee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내용입니다."
             />
+        <View style="@style/Divider"/>
 
         <TextView
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="댓글"
-            />
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/listView"
@@ -119,7 +116,8 @@
                 android:id="@+id/reg_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="8dp"
+                android:layout_marginLeft="3dp"
+                android:backgroundTint="@color/blue"
                 android:text="등록하기"/>
         </LinearLayout>
 

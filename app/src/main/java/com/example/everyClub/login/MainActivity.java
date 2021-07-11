@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (response.code() == 200) {
 
                                     Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
+                                    intent.putExtra("name", result.getKakaoAccount().getProfile().getNickname());
                                     startActivity(intent);
 
                                 } else if (response.code() == 400) {

@@ -61,6 +61,7 @@ public class NoticeDetailFragment extends Fragment {
         name = bundle.getString("name");
         position = bundle.getInt("POSITION");
 
+
         title_tv = view.findViewById(R.id.title_tv);
         content_tv = view.findViewById(R.id.content_tv);
         name_tv = view.findViewById(R.id.name_tv);
@@ -92,7 +93,7 @@ public class NoticeDetailFragment extends Fragment {
         reg_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                handleCreateComment();
+                handleCreateComment(name);
             }
         });
 
@@ -130,7 +131,7 @@ public class NoticeDetailFragment extends Fragment {
         });
     }
 
-    private void handleCreateComment() {
+    private void handleCreateComment(String name){
 
         HashMap<String, String> map = new HashMap<>();
 

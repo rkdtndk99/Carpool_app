@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LandingActivity extends AppCompatActivity {
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,8 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent1 = new Intent(getApplicationContext(), MyClubActivity.class); // 새로운 창을 만들기위한 객체
-                String name = intent.getStringExtra("name");
+                name = intent.getStringExtra("name");
+                intent1.putExtra("name", name);
                 startActivity(intent1);
             }
         });
