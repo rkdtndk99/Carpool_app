@@ -112,9 +112,8 @@ public class NoticeDetailFragment extends Fragment {
     }
     private void handleLoadComment() {
         HashMap<String, String> map = new HashMap<>();
-        //map.put("tableId", getIntent().getExtras().getString("tableId"));
+        map.put("tableId", table_id);
 
-//        Call<List<Comment>> call = retrofitInterface.executeCommentLoad(map);
         Call<List<Comment>> call = retrofitInterface.executeCommentLoad(map);
 
         call.enqueue(new Callback<List<Comment>>() {
@@ -135,10 +134,9 @@ public class NoticeDetailFragment extends Fragment {
 
         HashMap<String, String> map = new HashMap<>();
 
-//        map.put("tableId", getIntent().getExtras().getString("tableId"));
-//        map.put("name", getIntent().getExtras().getString("name"));
-//        map.put("content", comment_et.getText().toString());
-
+        map.put("tableId", table_id);
+        map.put("name", name);
+        map.put("content", comment_et.getText().toString());
 
         Call<Void> call = retrofitInterface.executeCommentCreate(map);
 
@@ -186,8 +184,8 @@ public class NoticeDetailFragment extends Fragment {
 
     private void handleDeleteComment(Comment comment) {
         HashMap<String, String> map = new HashMap<>();
-//        map.put("commentId", comment.get_id());
-//        map.put("name", getIntent().getExtras().getString("name"));
+        map.put("commentId", comment.get_id());
+        map.put("name", name);
         comment_list.remove(comment);
 
         Call<Void> call = retrofitInterface.executeCommentDelete(map);

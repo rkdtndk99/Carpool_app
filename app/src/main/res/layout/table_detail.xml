@@ -122,6 +122,8 @@
                 android:padding="8dp"
                 android:text="등록하기"/>
         </LinearLayout>
+
     </LinearLayout>
+
 
 </LinearLayout>

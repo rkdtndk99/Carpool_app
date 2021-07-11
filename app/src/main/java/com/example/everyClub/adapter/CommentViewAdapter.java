@@ -7,12 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.everyClub.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.example.everyClub.R;
 import com.example.everyClub.data.Comment;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 //오빠 CommentAdapter랑 동일
 
@@ -20,7 +25,7 @@ public class CommentViewAdapter extends BaseAdapter {
 
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
-    List<Comment> commentList;
+    List<Comment> commentList = null;
 
     public CommentViewAdapter(Context context, List<Comment> data) {
         this.mContext = context;
@@ -30,7 +35,11 @@ public class CommentViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return commentList.size();
+        //return commentList.size();
+        if (commentList!=null){
+            return commentList.size();
+        }
+       return 0;
     }
 
     @Override
