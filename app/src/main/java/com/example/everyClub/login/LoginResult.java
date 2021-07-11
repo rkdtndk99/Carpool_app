@@ -1,4 +1,4 @@
-package com.example.everyClub;
+package com.example.everyClub.login;
 
 public class LoginResult {
 

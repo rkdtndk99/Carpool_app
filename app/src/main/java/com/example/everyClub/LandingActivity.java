@@ -15,8 +15,6 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.landing_page);
         TextView nameText = (TextView)findViewById(R.id.nameText);
         Intent intent = getIntent();
-//        String name = intent.getStringExtra("name").toString() + "님 환영합니다!";
-//        nameText.setText(name);
 
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
@@ -28,7 +26,7 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent1 = new Intent(getApplicationContext(), MyClubActivity.class); // 새로운 창을 만들기위한 객체
-                intent1.putExtra("name", intent.getStringExtra("name").toString());
+                String name = intent.getStringExtra("name");
                 startActivity(intent1);
             }
         });
@@ -39,7 +37,6 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent2 = new Intent(getApplicationContext(), FindClubActivity.class); // 새로운 창을 만들기위한 객체
-                intent2.putExtra("name", intent.getStringExtra("name").toString());
                 startActivity(intent2);
             }
         });
@@ -50,7 +47,6 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent3 = new Intent(getApplicationContext(), RegisterClubActivity.class); // 새로운 창을 만들기위한 객체
-                intent3.putExtra("name", intent.getStringExtra("name").toString());
                 startActivity(intent3);
             }
         });

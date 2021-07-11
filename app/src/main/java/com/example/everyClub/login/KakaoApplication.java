@@ -1,4 +1,4 @@
-package com.example.everyClub;
+package com.example.everyClub.login;
 
 import android.app.Application;
 import android.content.Context;

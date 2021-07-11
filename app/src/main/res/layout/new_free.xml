@@ -10,46 +10,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="제목"/>
-
         <EditText
             android:id="@+id/title_et"
             android:padding="16dp"
-            android:background="#eeeeee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="제목을 입력하세요."
-            />
-    </LinearLayout>
+            android:backgroundTint="@color/lightgray" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="내용"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/light_blue"
+            android:id="@+id/write_free"
+            android:text="작성"/>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/content_et"
         android:padding="16dp"
+        android:gravity="top"
+        android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:ems="10"
         android:layout_weight="1"
-        android:background="#eeeeee"
-        android:hint="내용을 입력하세요."
-        />
-
-    <Button
-        android:id="@+id/reg_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="등록하기"
-        android:textColor="#FFFFFF"
-        android:background="#C62828"/>
-
+        android:hint="내용을 입력하세요." />
 
 </LinearLayout>
