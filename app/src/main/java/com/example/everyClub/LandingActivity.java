@@ -38,7 +38,7 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent intent2 = new Intent(getApplicationContext(), FindClubActivity.class); // 새로운 창을 만들기위한 객체
+                Intent intent2 = new Intent(getApplicationContext(), ClubListActivity.class); // 새로운 창을 만들기위한 객체
                 intent2.putExtra("name", intent.getStringExtra("name").toString());
                 startActivity(intent2);
             }
@@ -49,7 +49,7 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent intent3 = new Intent(getApplicationContext(), RegisterClubActivity.class); // 새로운 창을 만들기위한 객체
+                Intent intent3 = new Intent(getApplicationContext(), ClubRegisterActivity.class); // 새로운 창을 만들기위한 객체
                 intent3.putExtra("name", intent.getStringExtra("name").toString());
                 startActivity(intent3);
             }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.everyClub.R;
 import com.example.everyClub.data.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TableAdapter extends BaseAdapter {
@@ -22,6 +23,12 @@ public class TableAdapter extends BaseAdapter {
         mContext = context;
         tableList = data;
         mLayoutInflater = LayoutInflater.from(mContext);
+    }
+
+
+    public void updateReceiptsList(ArrayList<Table> data) {
+        tableList = data;
+        this.notifyDataSetChanged(); // 그냥 여기서 하자
     }
 
     @Override

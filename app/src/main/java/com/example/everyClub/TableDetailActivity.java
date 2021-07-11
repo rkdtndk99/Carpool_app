@@ -194,7 +194,6 @@ public class TableDetailActivity extends AppCompatActivity {
         HashMap<String, String> map = new HashMap<>();
         map.put("commentId", comment.get_id());
         map.put("name", getIntent().getExtras().getString("name"));
-        comment_list.remove(comment);
 
         Call<Void> call = retrofitInterface.executeCommentDelete(map);
 
@@ -202,8 +201,10 @@ public class TableDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 200) {
+                    comment_list.remove(comment);
                     Toast.makeText(TableDetailActivity.this,
                             "Comment Delete Successfully", Toast.LENGTH_LONG).show();
+                    handleLoadComment();
                 } else if (response.code() == 400) {
                     Toast.makeText(TableDetailActivity.this,
                             "Fail", Toast.LENGTH_LONG).show();

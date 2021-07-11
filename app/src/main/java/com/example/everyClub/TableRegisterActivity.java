@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.everyClub.adapter.TableAdapter;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -14,6 +16,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class TableRegisterActivity extends AppCompatActivity {
 
@@ -54,6 +57,7 @@ public class TableRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // 게시물 등록 함수
                 handleTableCreate();
+
             }
         });
     }

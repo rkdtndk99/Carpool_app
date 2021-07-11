@@ -16,7 +16,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegisterClubActivity extends AppCompatActivity {
+public class ClubRegisterActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -74,11 +74,11 @@ public class RegisterClubActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.code() == 200) {
-                    Toast.makeText(RegisterClubActivity.this,
+                    Toast.makeText(ClubRegisterActivity.this,
                             "Club Create Successfully", Toast.LENGTH_LONG).show();
                     finish();
                 } else if (response.code() == 400) {
-                    Toast.makeText(RegisterClubActivity.this,
+                    Toast.makeText(ClubRegisterActivity.this,
                             "Fail", Toast.LENGTH_LONG).show();
                 }
 
@@ -86,7 +86,7 @@ public class RegisterClubActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(RegisterClubActivity.this, t.getMessage(),
+                Toast.makeText(ClubRegisterActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });

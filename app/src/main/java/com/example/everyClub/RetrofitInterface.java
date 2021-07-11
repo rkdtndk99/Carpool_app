@@ -1,8 +1,10 @@
 package com.example.everyClub;
 
+import com.example.everyClub.data.Club;
 import com.example.everyClub.data.Comment;
 import com.example.everyClub.data.Table;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,6 +35,12 @@ public interface RetrofitInterface {
 
     @POST("/club/create")
     Call<Void> executeClubCreate (@Body HashMap<String, String> map);
+
+    @GET("/club/")
+    Call<List<Club>> executeClubLoad ();
+
+    @HTTP(method = "DELETE", path = "/club/delete", hasBody = true)
+    Call<Void> executeClubDelete (@Body HashMap<String, String> map);
 
     @POST("/comment/create")
     Call<Void> executeCommentCreate (@Body HashMap<String, String> map);

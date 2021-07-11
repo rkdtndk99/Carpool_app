@@ -20,9 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".LandingActivity"></activity>
+
         <activity android:name=".MyClubActivity"></activity>
-        <activity android:name=".FindClubActivity"></activity>
-        <activity android:name=".RegisterClubActivity"></activity>
+        <activity android:name=".ClubRegisterActivity"></activity>
+        <activity android:name=".ClubListActivity"></activity>
+        <activity android:name=".ClubDetailActivity"></activity>
 
         <activity android:name=".TableListActivity"></activity>
         <activity android:name=".TableRegisterActivity"></activity>
