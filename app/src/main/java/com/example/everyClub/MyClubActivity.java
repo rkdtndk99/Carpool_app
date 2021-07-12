@@ -2,6 +2,7 @@ package com.example.everyClub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class MyClubActivity extends AppCompatActivity {
     private PhotoFragment pf;
     private NewNoticeFragment nnf;
     NoticeDetailFragment ndf;
+    ChatFragment cf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class MyClubActivity extends AppCompatActivity {
         pic_uri = intent.getStringExtra("profile_pic");
         birthday =intent.getStringExtra("birthday");
         email = intent.getStringExtra("email");
+
+        Log.i("name", "print" + name);
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -66,6 +70,7 @@ public class MyClubActivity extends AppCompatActivity {
         pf = new PhotoFragment();
         nnf = new NewNoticeFragment(name);
         ndf = new NoticeDetailFragment();
+        cf = new ChatFragment();
 
         setFrag(1); // 첫 프래그먼트 화면 지정
     }
@@ -102,10 +107,10 @@ public class MyClubActivity extends AppCompatActivity {
                 ft.commit();
                 break;
 
-//            case 5:  //글 작성하는 프래그먼트(자유)
-//                ft.replace(R.id.Main_Frame, nff);
-//                ft.commit();
-//                break;
+            case 5:  //채팅 프래그먼트로 넘어가기
+                ft.replace(R.id.Main_Frame, cf);
+                ft.commit();
+                break;
 
             case 6:  //글 디테일 프래그먼트로 넘어가기
                 ft.replace(R.id.Main_Frame, ndf);

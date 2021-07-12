@@ -164,6 +164,7 @@ public class NoticeFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which)
                     {
                         handleDeleteTable(table);
+                        ((MyClubActivity)getActivity()).setFrag(0);
                     }
                 })
                 .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
@@ -181,6 +182,7 @@ public class NoticeFragment extends Fragment {
             public void onResponse(Call<Void> call, Response<Void> response) {
 //                table_list.remove(table);
                 if (response.code() == 200) {
+
                 } else if (response.code() == 400) {
                 }
             }

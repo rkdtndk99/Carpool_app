@@ -14,13 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.everyClub.login.MainActivity;
 
 public class LandingActivity extends AppCompatActivity {
-    String name,pic_uri,birthday, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
-        TextView nameText = (TextView)findViewById(R.id.nameText);
 
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
@@ -32,14 +30,14 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = getIntent();
+                String name = intent.getStringExtra("name");
+                String email = intent.getStringExtra("email");
+                String pic_uri = intent.getStringExtra("profile_pic");
+                String birthday = intent.getStringExtra("birthday");
+
+                Log.i("name", "print" + name);
+
                 Intent intent1 = new Intent(LandingActivity.this, MyClubActivity.class); // 새로운 창을 만들기위한 객체
-                name = intent.getStringExtra("name");
-                email = intent.getStringExtra("email");
-                pic_uri = intent.getStringExtra("profile_pic");
-                birthday = intent.getStringExtra("birthday");
-
-                Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
-
                 intent1.putExtra("name", name);
                 intent1.putExtra("email", email);
                 intent1.putExtra("profile_pic",pic_uri);
