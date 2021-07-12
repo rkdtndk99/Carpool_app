@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                         map.put("name", result.getKakaoAccount().getProfile().getNickname());
                         map.put("email", result.getKakaoAccount().getEmail());
 
+
                         System.out.print(result.getId());
 
                         Call<Void> call = retrofitInterface.executeKLogin(map);
@@ -150,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
 
                                     Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
                                     intent.putExtra("name", result.getKakaoAccount().getProfile().getNickname());
+                                    intent.putExtra("email", result.getKakaoAccount().getEmail());
+                                    intent.putExtra("profile_pic", result.getKakaoAccount().getProfile().getProfileImageUrl());
+                                    intent.putExtra("birthday", result.getKakaoAccount().getBirthday());
                                     startActivity(intent);
 
                                 } else if (response.code() == 400) {
