@@ -35,7 +35,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//종서오빠 TableListActivity와 동일
+//TableListActivity와 동일
 
 public class NoticeFragment extends Fragment {
     private View view;

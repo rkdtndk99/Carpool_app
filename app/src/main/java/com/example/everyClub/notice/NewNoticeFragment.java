@@ -26,7 +26,7 @@ public class NewNoticeFragment extends Fragment {
     private String name;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.249.18.147";
+    private String BASE_URL = "http://192.249.18.120";
     EditText notice_title, notice_content;
 
     public NewNoticeFragment(String name){

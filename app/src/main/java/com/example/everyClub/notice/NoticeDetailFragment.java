@@ -46,7 +46,7 @@ public class NoticeDetailFragment extends Fragment {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.249.18.147";
+    private String BASE_URL = "http://192.249.18.120";
 
     // comment list
     public static List<Comment> comment_list;
