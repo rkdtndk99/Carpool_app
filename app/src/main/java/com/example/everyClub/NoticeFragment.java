@@ -4,21 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NoticeFragment extends Fragment {
     private View view;
-    private String name;
+    private String _userId ,name;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://192.249.18.120";
@@ -61,7 +55,8 @@ public class NoticeFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    public NoticeFragment(String name){
+    public NoticeFragment(String _userId, String name){
+        this._userId = _userId;
         this.name=name;
     }
     @Override
@@ -179,9 +174,11 @@ public class NoticeFragment extends Fragment {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-//                table_list.remove(table);
+//                Log.i("code?", Integer.toString(response.code()));
                 if (response.code() == 200) {
+                    Toast.makeText(getActivity().getApplicationContext(), "게시물 삭제 성공.", Toast.LENGTH_SHORT);
                 } else if (response.code() == 400) {
+                    Toast.makeText(getActivity().getApplicationContext(), "내 게시물만 삭제 가능합니다.", Toast.LENGTH_SHORT);
                 }
             }
 
@@ -189,8 +186,7 @@ public class NoticeFragment extends Fragment {
             public void onFailure(Call<Void> call, Throwable t) {
             }
         });
-
-//        tableAdapter.notifyDataSetChanged();
+        handleTableLoad();
     }
 
 }

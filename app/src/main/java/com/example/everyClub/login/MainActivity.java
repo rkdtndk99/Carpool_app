@@ -1,6 +1,5 @@
 package com.example.everyClub.login;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -65,18 +64,18 @@ public class MainActivity extends AppCompatActivity {
                 map.put("userId", userIdEdit.getText().toString());
                 map.put("password", passwordEdit.getText().toString());
 
-                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+                Call<User> call = retrofitInterface.executeLogin(map);
 
-                call.enqueue(new Callback<LoginResult>() {
+                call.enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                    public void onResponse(Call<User> call, Response<User> response) {
 
                         if (response.code() == 200) {
 
-//                            LoginResult result = response.body();
-
+                            User user = response.body();
                             Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
-                            intent.putExtra("name", userIdEdit.getText().toString());
+                            intent.putExtra("_userId", user.get_id());
+                            intent.putExtra("name", user.getName());
                             startActivity(intent);
 
                         } else if (response.code() == 404) {
@@ -86,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<LoginResult> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "로그인 안돼ㅐㅐㅐ",
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, "로그인 에러",
                                 Toast.LENGTH_LONG).show();
                     }
                 });

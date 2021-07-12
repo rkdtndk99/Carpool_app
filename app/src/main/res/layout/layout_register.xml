@@ -76,6 +76,18 @@
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputBirthday"
+        style="@style/parent.TextLayout"
+        android:layout_marginTop="@dimen/signup_text_margin_top">
+        <EditText
+            android:id="@+id/signBirthday"
+            style="@style/modifiedEditText"
+            android:hint="birthday"
+            android:maxLines="1"
+            android:inputType="date"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,13 +96,6 @@
         android:layout_gravity="right"
         android:padding="10dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:text="회원가입하기"/>
+
 
 </LinearLayout>

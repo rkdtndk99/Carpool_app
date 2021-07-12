@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
@@ -199,7 +200,6 @@ public class NoticeDetailFragment extends Fragment {
         HashMap<String, String> map = new HashMap<>();
         map.put("commentId", comment.get_id());
         map.put("name", name);
-        comment_list.remove(comment);
 
         Call<Void> call = retrofitInterface.executeCommentDelete(map);
 
@@ -207,7 +207,9 @@ public class NoticeDetailFragment extends Fragment {
             @Override
             public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.code() == 200) {
+                    Toast.makeText(getActivity().getApplicationContext(), "댓글 삭제 성공", Toast.LENGTH_SHORT);
                 } else if (response.code() == 400) {
+                    Toast.makeText(getActivity().getApplicationContext(), "내 댓글만 삭제 가능합니다.", Toast.LENGTH_SHORT);
                 }
             }
 
@@ -215,6 +217,6 @@ public class NoticeDetailFragment extends Fragment {
             public void onFailure(Call<Void> call, Throwable t) {
             }
         });
-        commentAdapter.notifyDataSetChanged();
+        handleLoadComment();
     }
 }

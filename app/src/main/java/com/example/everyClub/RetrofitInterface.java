@@ -1,7 +1,7 @@
 package com.example.everyClub;
 
 import com.example.everyClub.data.Table;
-import com.example.everyClub.login.LoginResult;
+import com.example.everyClub.login.User;
 import com.example.everyClub.data.Comment;
 
 import java.util.HashMap;
@@ -19,11 +19,11 @@ public interface RetrofitInterface {
     @POST("/user/kakao_create")
     Call<Void> executeKLogin(@Body HashMap<String, String> map);
 
+    @POST("/user/login")
+    Call<User> executeLogin(@Body HashMap<String, String> map);
+
     @POST("/user/create")
     Call<Void> executeSignup (@Body HashMap<String, String> map);
-
-    @POST("/user/login")
-    Call<LoginResult> executeLogin(@Body HashMap<String, String> map);
 
     @POST("/table/create")
     Call<Void> executeTableCreate (@Body HashMap<String, String> map);

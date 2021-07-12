@@ -2,6 +2,7 @@ package com.example.everyClub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LandingActivity extends AppCompatActivity {
-    String name,pic_uri,birthday, email;
+    String _userId, name, pic_uri, birthday, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,13 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent1 = new Intent(getApplicationContext(), MyClubActivity.class); // 새로운 창을 만들기위한 객체
+                _userId = intent.getStringExtra("_userId");
                 name = intent.getStringExtra("name");
                 email = intent.getStringExtra("email");
                 pic_uri = intent.getStringExtra("profile_pic");
                 birthday = intent.getStringExtra("birthday");
+                Log.i("_userId", _userId);
+                intent1.putExtra("_userId", _userId);
                 intent1.putExtra("name", name);
                 intent1.putExtra("email", email);
                 intent1.putExtra("profile_pic",pic_uri);

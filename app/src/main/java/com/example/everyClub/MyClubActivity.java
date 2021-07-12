@@ -2,6 +2,7 @@ package com.example.everyClub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyClubActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    String name,pic_uri,birthday, email;
+    String _userId, name, pic_uri, birthday, email;
     private FragmentManager fm;
     private FragmentTransaction ft;
     private ProfileFragment pff;
@@ -31,10 +32,13 @@ public class MyClubActivity extends AppCompatActivity {
         setContentView(R.layout.myclub_page);
 
         Intent intent = getIntent();
+        _userId = intent.getStringExtra("_userId");
         name = intent.getStringExtra("name");
         pic_uri = intent.getStringExtra("profile_pic");
         birthday =intent.getStringExtra("birthday");
         email = intent.getStringExtra("email");
+
+        Log.i("_userId", _userId);
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -61,7 +65,7 @@ public class MyClubActivity extends AppCompatActivity {
             }
         });
         pff = new ProfileFragment(name,pic_uri, birthday, email);
-        nf = new NoticeFragment(name);
+        nf = new NoticeFragment(_userId, name);
         mf = new MessageFragment();
         pf = new PhotoFragment();
         nnf = new NewNoticeFragment(name);
