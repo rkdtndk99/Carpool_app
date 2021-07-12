@@ -2,7 +2,6 @@ package com.example.everyClub;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -10,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.everyClub.notice.NewNoticeFragment;
+import com.example.everyClub.notice.NoticeDetailFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyClubActivity extends AppCompatActivity {
@@ -17,13 +18,11 @@ public class MyClubActivity extends AppCompatActivity {
     String name;
     private FragmentManager fm;
     private FragmentTransaction ft;
+    private ProfileFragment pff;
     private NoticeFragment nf;
-    private FreeFragment ff;
-    private QuestionFragment qf;
+    private MessageFragment mf;
     private PhotoFragment pf;
     private NewNoticeFragment nnf;
-    private NewFreeFragment nff;
-    private NewQuestionFragment nqf;
     NoticeDetailFragment ndf;
 
     @Override
@@ -45,13 +44,13 @@ public class MyClubActivity extends AppCompatActivity {
                     case R.id.notice:
                         setFrag(0);
                         break;
-                    case R.id.free:
+                    case R.id.profile:
                         setFrag(1);
                         break;
-                    case R.id.questions:
+                    case R.id.photos:
                         setFrag(2);
                         break;
-                    case R.id.photos:
+                    case R.id.message:
                         setFrag(3);
                         break;
                 }
@@ -60,15 +59,12 @@ public class MyClubActivity extends AppCompatActivity {
         });
 
         nf = new NoticeFragment(name);
-        ff = new FreeFragment();
-        qf = new QuestionFragment();
+        mf = new MessageFragment();
         pf = new PhotoFragment();
         nnf = new NewNoticeFragment(name);
-        nff = new NewFreeFragment();
-        nqf = new NewQuestionFragment();
         ndf = new NoticeDetailFragment();
 
-        setFrag(0); // 첫 프래그먼트 화면 지정
+        setFrag(1); // 첫 프래그먼트 화면 지정
     }
 
     // 프레그먼트 교체
@@ -83,18 +79,18 @@ public class MyClubActivity extends AppCompatActivity {
                 ft.commit();
                 break;
 
-            case 1:  //자유게시판
-                ft.replace(R.id.Main_Frame,ff);
+            case 1:  //프로필
+                ft.replace(R.id.Main_Frame,pff);
                 ft.commit();
                 break;
 
-            case 2:  //질문게시판
-                ft.replace(R.id.Main_Frame,qf);
-                ft.commit();
-                break;
-
-            case 3:  //사진게시판
+            case 2:  //사진게시판
                 ft.replace(R.id.Main_Frame, pf);
+                ft.commit();
+                break;
+
+            case 3:  //단체 메신저
+                ft.replace(R.id.Main_Frame,mf);
                 ft.commit();
                 break;
 
@@ -103,16 +99,12 @@ public class MyClubActivity extends AppCompatActivity {
                 ft.commit();
                 break;
 
-            case 5:  //글 작성하는 프래그먼트(자유)
-                ft.replace(R.id.Main_Frame, nff);
-                ft.commit();
-                break;
+//            case 5:  //글 작성하는 프래그먼트(자유)
+//                ft.replace(R.id.Main_Frame, nff);
+//                ft.commit();
+//                break;
 
-            case 6:  //글 작성하는 프래그먼트(질문)
-                ft.replace(R.id.Main_Frame, nqf);
-                ft.commit();
-                break;
-            case 7:  //글 디테일 프래그먼트로 넘어가기
+            case 6:  //글 디테일 프래그먼트로 넘어가기
                 ft.replace(R.id.Main_Frame, ndf);
                 ft.commit();
                 break;

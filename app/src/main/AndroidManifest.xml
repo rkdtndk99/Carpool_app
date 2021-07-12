@@ -20,8 +20,6 @@
         <activity android:name=".MyClubActivity" />
         <activity android:name=".FindClubActivity" />
         <activity android:name=".RegisterClubActivity" />
-        <activity android:name=".TableDetailActivity" />
-        <activity android:name=".TableListActivity" />
         <activity android:name=".login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

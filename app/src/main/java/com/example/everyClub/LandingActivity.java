@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LandingActivity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.landing_page);
         TextView nameText = (TextView)findViewById(R.id.nameText);
         Intent intent = getIntent();
+
 
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);

@@ -2,17 +2,23 @@ package com.example.everyClub;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,6 +57,8 @@ public class NoticeFragment extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
     }
 
     public NoticeFragment(String name){
@@ -61,7 +69,6 @@ public class NoticeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_notice, container, false);
         listView = (ListView) view.findViewById(R.id.notice_listview);
-
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -88,7 +95,7 @@ public class NoticeFragment extends Fragment {
 
 
                 ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
-                ((MyClubActivity)getActivity()).setFrag(7);
+                ((MyClubActivity)getActivity()).setFrag(6);
             }
         });
         // listView 를 길게 눌렀을때 글 삭제
@@ -109,6 +116,14 @@ public class NoticeFragment extends Fragment {
            public void onClick(View v) {
                ((MyClubActivity)getActivity()).setFrag(4);
            }
+        });
+
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LandingActivity.class);
+                startActivity(intent);
+            }
         });
         return view;
     }
@@ -177,4 +192,5 @@ public class NoticeFragment extends Fragment {
 
 //        tableAdapter.notifyDataSetChanged();
     }
+
 }

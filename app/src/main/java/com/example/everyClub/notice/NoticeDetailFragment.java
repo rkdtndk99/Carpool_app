@@ -1,10 +1,11 @@
-package com.example.everyClub;
+package com.example.everyClub.notice;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,8 +14,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
+import com.example.everyClub.MyClubActivity;
+import com.example.everyClub.NoticeFragment;
+import com.example.everyClub.R;
+import com.example.everyClub.RetrofitInterface;
 import com.example.everyClub.adapter.CommentViewAdapter;
 import com.example.everyClub.data.Table;
 import com.example.everyClub.data.Comment;
@@ -109,6 +115,12 @@ public class NoticeDetailFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MyClubActivity)getActivity()).setFrag(0);  //NoticeFragment로 돌아가기
+            }
+        });
         return view;
     }
     private void handleLoadComment() {
@@ -205,5 +217,4 @@ public class NoticeDetailFragment extends Fragment {
         });
         commentAdapter.notifyDataSetChanged();
     }
-
 }

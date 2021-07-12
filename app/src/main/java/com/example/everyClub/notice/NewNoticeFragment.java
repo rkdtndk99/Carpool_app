@@ -1,4 +1,4 @@
-package com.example.everyClub;
+package com.example.everyClub.notice;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.everyClub.MyClubActivity;
+import com.example.everyClub.R;
+import com.example.everyClub.RetrofitInterface;
 
 import java.util.HashMap;
 
@@ -51,6 +55,12 @@ public class NewNoticeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 handleTableCreate();
+                ((MyClubActivity)getActivity()).setFrag(0);
+            }
+        });
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
                 ((MyClubActivity)getActivity()).setFrag(0);
             }
         });
