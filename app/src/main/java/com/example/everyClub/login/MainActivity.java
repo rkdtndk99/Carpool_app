@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (response.code() == 200) {
 
-                                    Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
+                                    Intent intent = new Intent(MainActivity.this, LandingActivity.class);
                                     intent.putExtra("name", result.getKakaoAccount().getProfile().getNickname());
                                     intent.putExtra("email", result.getKakaoAccount().getEmail());
                                     intent.putExtra("profile_pic", result.getKakaoAccount().getProfile().getProfileImageUrl());
