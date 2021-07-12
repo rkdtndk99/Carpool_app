@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyClubActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    String name;
+    String name,pic_uri,birthday, email;
     private FragmentManager fm;
     private FragmentTransaction ft;
     private ProfileFragment pff;
@@ -32,6 +32,9 @@ public class MyClubActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
+        pic_uri = intent.getStringExtra("profile_pic");
+        birthday =intent.getStringExtra("birthday");
+        email = intent.getStringExtra("email");
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -57,7 +60,7 @@ public class MyClubActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        pff = new ProfileFragment(name,pic_uri, birthday, email);
         nf = new NoticeFragment(name);
         mf = new MessageFragment();
         pf = new PhotoFragment();
