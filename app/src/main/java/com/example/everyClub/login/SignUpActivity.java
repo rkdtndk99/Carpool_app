@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignUpActivity extends AppCompatActivity {
     public Retrofit retrofit;
     public RetrofitInterface retrofitInterface;
-    public String BASE_URL = "http://192.249.18.147";
+    public String BASE_URL = "http://192.249.18.120";
     EditText signName, signId, signEmail, signPassword;
 
     @Override

@@ -42,7 +42,7 @@ public class NoticeFragment extends Fragment {
     private String name;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.249.18.147";
+    private String BASE_URL = "http://192.249.18.120";
     ListViewAdapter tableAdapter;
     public static List<Table> table_list;
     ListView listView;
