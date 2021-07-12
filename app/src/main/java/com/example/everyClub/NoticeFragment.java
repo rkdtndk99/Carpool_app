@@ -159,6 +159,7 @@ public class NoticeFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which)
                     {
                         handleDeleteTable(table);
+                        ((MyClubActivity)getActivity()).setFrag(0);
                     }
                 })
                 .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
@@ -177,6 +178,7 @@ public class NoticeFragment extends Fragment {
 //                Log.i("code?", Integer.toString(response.code()));
                 if (response.code() == 200) {
                     Toast.makeText(getActivity().getApplicationContext(), "게시물 삭제 성공.", Toast.LENGTH_SHORT);
+
                 } else if (response.code() == 400) {
                     Toast.makeText(getActivity().getApplicationContext(), "내 게시물만 삭제 가능합니다.", Toast.LENGTH_SHORT);
                 }

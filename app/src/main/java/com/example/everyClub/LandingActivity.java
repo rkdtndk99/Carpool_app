@@ -6,9 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.everyClub.login.MainActivity;
 
 public class LandingActivity extends AppCompatActivity {
     String _userId, name, pic_uri, birthday, email;
@@ -17,9 +20,6 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
-        TextView nameText = (TextView)findViewById(R.id.nameText);
-        Intent intent = getIntent();
-
 
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
@@ -30,17 +30,18 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                _userId = getIntent().getStringExtra("_userId");
+                name = getIntent().getStringExtra("name");
+                email = getIntent().getStringExtra("email");
+                pic_uri = getIntent().getStringExtra("profile_pic");
+                birthday = getIntent().getStringExtra("birthday");
+                Log.i("name??", "print" + name);
+                Log.i("birthday", "primt" + birthday);
                 Intent intent1 = new Intent(getApplicationContext(), MyClubActivity.class); // 새로운 창을 만들기위한 객체
-                _userId = intent.getStringExtra("_userId");
-                name = intent.getStringExtra("name");
-                email = intent.getStringExtra("email");
-                pic_uri = intent.getStringExtra("profile_pic");
-                birthday = intent.getStringExtra("birthday");
-                Log.i("_userId", _userId);
                 intent1.putExtra("_userId", _userId);
                 intent1.putExtra("name", name);
                 intent1.putExtra("email", email);
-                intent1.putExtra("profile_pic",pic_uri);
+                intent1.putExtra("pic_uri", pic_uri);
                 intent1.putExtra("birthday", birthday);
                 startActivity(intent1);
             }

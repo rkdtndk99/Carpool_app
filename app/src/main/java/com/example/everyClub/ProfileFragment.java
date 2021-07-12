@@ -41,6 +41,10 @@ public class ProfileFragment extends Fragment {
         p_birthday = view.findViewById(R.id.p_birthday);
         profile_img = view.findViewById(R.id.profile_pic);
 
+        Log.i("name!!!!", "print" + name);
+        Log.i("email!!!!", "print" + email);
+        Log.i("birthday!!!!", "print" + birthday);
+
         p_name.setText(name);
         p_email.setText(email);
         p_birthday.setText(birthday);

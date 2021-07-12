@@ -4,6 +4,7 @@
     package="com.example.everyClub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".login.KakaoApplication"
@@ -15,7 +16,7 @@
         android:theme="@style/LoginTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".login.SignUpActivity"></activity>
+        <activity android:name=".login.SignUpActivity"/>
         <activity android:name=".LandingActivity" />
         <activity android:name=".MyClubActivity" />
         <activity android:name=".FindClubActivity" />

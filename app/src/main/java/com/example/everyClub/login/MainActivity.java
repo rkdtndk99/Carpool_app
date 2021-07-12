@@ -1,9 +1,15 @@
 package com.example.everyClub.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +28,7 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -41,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
 
-//        getAppKeyHash();
+        getAppKeyHash();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -148,8 +155,12 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (response.code() == 200) {
 
-                                    Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
-                                    intent.putExtra("name", result.getKakaoAccount().getProfile().getNickname());
+                                    Intent intent = new Intent(MainActivity.this, LandingActivity.class);
+                                    String name1 = result.getKakaoAccount().getProfile().getNickname();
+
+                                    Log.i("name1", "print" + name1);
+
+                                    intent.putExtra("name", name1);
                                     intent.putExtra("email", result.getKakaoAccount().getEmail());
                                     intent.putExtra("profile_pic", result.getKakaoAccount().getProfile().getProfileImageUrl());
                                     intent.putExtra("birthday", result.getKakaoAccount().getBirthday());
@@ -185,23 +196,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "onSessionOpenFailed", Toast.LENGTH_SHORT).show();
             }
         };
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 10);
+
         Session.getCurrentSession().addCallback(mSessionCallback);
         Session.getCurrentSession().checkAndImplicitOpen();
 
     }
 
-//    private void getAppKeyHash() {
-//        try {
-//            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-//            for (Signature signature : info.signatures) {
-//                MessageDigest md;
-//                md = MessageDigest.getInstance("SHA");
-//                md.update(signature.toByteArray());
-//                String something = new String(Base64.encode(md.digest(), 0));
-//                Log.e("Hash key", something);
-//            }
-//        } catch (Exception e) {
-//            Log.e("name not found", e.toString());
-//        }
-//    }
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.i("Hash key", something);
+            }
+        } catch (Exception e) {
+            Log.e("name not found", e.toString());
+        }
+    }
 }
