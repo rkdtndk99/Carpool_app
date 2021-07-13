@@ -23,7 +23,7 @@ android:paddingBottom="16dp"
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="동아리 가기"
+        android:text="게시판 가기"
         android:id="@+id/button1"
         android:background="@drawable/loginbtn_background"
         android:textColor="@color/black"
@@ -34,7 +34,7 @@ android:paddingBottom="16dp"
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="동아리 찾기"
+        android:text="내가 쓴 글"
         android:id="@+id/button2"
         android:background="@drawable/loginbtn_background"
         android:textColor="@color/black"
@@ -49,7 +49,7 @@ android:paddingBottom="16dp"
         android:textColor="@color/black"
         android:layout_margin="20dp"
         android:layout_gravity="center"
-        android:text="동아리 등록" />
+        android:text="내가 쓴 댓글" />
 
 </LinearLayout>
 

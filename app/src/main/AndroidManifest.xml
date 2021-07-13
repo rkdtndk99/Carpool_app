@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -21,8 +20,8 @@
         <activity android:name=".login.SignUpActivity"/>
         <activity android:name=".LandingActivity" />
         <activity android:name=".MyClubActivity" />
-        <activity android:name=".FindClubActivity" />
-        <activity android:name=".RegisterClubActivity" />
+        <activity android:name=".MyPostActivity" />
+        <activity android:name=".MyCommentActivity" />
         <activity android:name=".login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
