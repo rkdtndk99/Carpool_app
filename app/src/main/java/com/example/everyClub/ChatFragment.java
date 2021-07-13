@@ -1,6 +1,12 @@
 package com.example.everyClub;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,6 +35,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -186,21 +193,25 @@ public class ChatFragment extends Fragment implements TextWatcher {
 
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
-
-            getActivity().startActivityForResult(Intent.createChooser(intent, "Pick image"),
+            Log.i("Image1","Success");
+            startActivityForResult(Intent.createChooser(intent, "Pick image"),
                     IMAGE_REQUEST_ID);
 
         });
 
     }
 
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.i("Image2","Success");
 
         if (requestCode == IMAGE_REQUEST_ID && resultCode == RESULT_OK) {
 
             try {
+                Log.i("Image3","Success");
                 InputStream is = getActivity().getContentResolver().openInputStream(data.getData());
                 Bitmap image = BitmapFactory.decodeStream(is);
 
