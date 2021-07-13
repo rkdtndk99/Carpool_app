@@ -170,7 +170,6 @@ public class ChatFragment extends Fragment implements TextWatcher {
         messageAdapter = new MessageAdapter(getLayoutInflater());
         recyclerView.setAdapter(messageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         messageEdit.addTextChangedListener((TextWatcher) this);
         sendBtn.setOnClickListener(v -> {
 

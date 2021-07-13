@@ -22,7 +22,6 @@ public class MyClubActivity extends AppCompatActivity {
     private ProfileFragment pff;
     private NoticeFragment nf;
     private MessageFragment mf;
-    private PhotoFragment pf;
     private NewNoticeFragment nnf;
     NoticeDetailFragment ndf;
     ChatFragment cf;
@@ -55,9 +54,6 @@ public class MyClubActivity extends AppCompatActivity {
                     case R.id.profile:
                         setFrag(1);
                         break;
-                    case R.id.photos:
-                        setFrag(2);
-                        break;
                     case R.id.message:
                         setFrag(3);
                         break;
@@ -68,7 +64,6 @@ public class MyClubActivity extends AppCompatActivity {
         pff = new ProfileFragment(name,pic_uri, birthday, email);
         nf = new NoticeFragment(_userId, name);
         mf = new MessageFragment();
-        pf = new PhotoFragment();
         nnf = new NewNoticeFragment(name);
         ndf = new NoticeDetailFragment();
         cf = new ChatFragment();
@@ -90,11 +85,6 @@ public class MyClubActivity extends AppCompatActivity {
 
             case 1:  //프로필
                 ft.replace(R.id.Main_Frame,pff);
-                ft.commit();
-                break;
-
-            case 2:  //사진게시판
-                ft.replace(R.id.Main_Frame, pf);
                 ft.commit();
                 break;
 
