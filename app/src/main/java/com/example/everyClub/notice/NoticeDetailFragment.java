@@ -23,6 +23,7 @@ import com.example.everyClub.RetrofitInterface;
 import com.example.everyClub.adapter.CommentViewAdapter;
 import com.example.everyClub.data.Table;
 import com.example.everyClub.data.Comment;
+import com.example.everyClub.login.KakaoApplication;
 
 import java.util.HashMap;
 import java.util.List;
@@ -118,6 +119,23 @@ public class NoticeDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MyClubActivity)getActivity()).setFrag(0);  //NoticeFragment로 돌아가기
+            }
+        });
+
+        view.findViewById(R.id.update).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("tableId", table.get_id());
+                bundle.putString("name", name);
+                Log.i("아이디1", "print"+table.get_id());
+//                ((MyClubActivity)getActivity()).ef.setArguments(bundle);
+//                (MyClubActivity)getActivity().
+                KakaoApplication ka = (KakaoApplication) getActivity().getApplicationContext();
+                ka.setUserName(name);
+                ka.setTableId(table.get_id());
+                ((MyClubActivity)getActivity()).setFrag(7);  //NoticeFragment로 돌아가기
             }
         });
         return view;

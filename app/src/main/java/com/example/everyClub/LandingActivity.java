@@ -61,7 +61,9 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                name = getIntent().getStringExtra("name");
                 Intent intent3 = new Intent(getApplicationContext(), MyCommentActivity.class); // 새로운 창을 만들기위한 객체
+                intent3.putExtra("name", name);
                 startActivity(intent3);
             }
         });

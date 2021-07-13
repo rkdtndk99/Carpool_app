@@ -25,6 +25,7 @@ public class MyClubActivity extends AppCompatActivity {
     private NewNoticeFragment nnf;
     NoticeDetailFragment ndf;
     ChatFragment cf;
+    EditNoticeFragment ef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class MyClubActivity extends AppCompatActivity {
         nnf = new NewNoticeFragment(name);
         ndf = new NoticeDetailFragment();
         cf = new ChatFragment();
+        ef = new EditNoticeFragment();
 
         setFrag(1); // 첫 프래그먼트 화면 지정
     }
@@ -105,6 +107,11 @@ public class MyClubActivity extends AppCompatActivity {
 
             case 6:  //글 디테일 프래그먼트로 넘어가기
                 ft.replace(R.id.Main_Frame, ndf);
+                ft.commit();
+                break;
+
+            case 7:  //글 수정 프래그먼트로 넘어가기
+                ft.replace(R.id.Main_Frame, ef);
                 ft.commit();
                 break;
         }

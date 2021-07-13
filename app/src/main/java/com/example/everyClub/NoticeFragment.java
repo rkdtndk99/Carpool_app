@@ -91,7 +91,7 @@ public class NoticeFragment extends Fragment {
                 Log.d("LONG CLICK", "OnLongClickListener");
                 // 해당 게시물 정보
                 Table table = table_list.get(position);
-                DeleteDialog(table);
+                noticeDialog(table);
                 return true;
             }
         });
@@ -131,7 +131,7 @@ public class NoticeFragment extends Fragment {
         });
     }
 
-    private void DeleteDialog(Table table) {
+    private void noticeDialog(Table table) {
         AlertDialog.Builder oDialog = new AlertDialog.Builder(getContext(),
                 android.R.style.Theme_DeviceDefault_Light_Dialog);
 

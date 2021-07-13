@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.everyClub.adapter.ListViewAdapter;
 import com.example.everyClub.data.Table;
+import com.example.everyClub.login.KakaoApplication;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +55,20 @@ public class MyPostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyPostActivity.this, LandingActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Table table = table_list.get(position);
+                Bundle bundle = new Bundle();
+                bundle.putInt("POSITION", position);
+                bundle.putString("tableId", table.get_id());
+                bundle.putString("name", name);
+//                ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
+                ((MyClubActivity)getActivity()).setFrag(6);
+
             }
         });
     }

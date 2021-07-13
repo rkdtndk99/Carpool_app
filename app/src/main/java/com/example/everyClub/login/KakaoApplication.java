@@ -14,6 +14,34 @@ public class KakaoApplication extends Application
 {
     private static volatile KakaoApplication instance = null;
 
+    public static String userName;
+    public static String tableId;
+    public static String commentId;
+
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static String getTableId() {
+        return tableId;
+    }
+
+    public static String getCommentId() {
+        return commentId;
+    }
+
+    public static void setUserName(String userName) {
+        KakaoApplication.userName = userName;
+    }
+
+    public static void setTableId(String tableId) {
+        KakaoApplication.tableId = tableId;
+    }
+
+    public static void setCommentId(String commentId) {
+        KakaoApplication.commentId = commentId;
+    }
+
     private static class KakaoSDKAdapter extends KakaoAdapter
     {
         // 카카오 로그인 세션을 불러올 때의 설정값을 설정하는 부분.

@@ -12,6 +12,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface RetrofitInterface {
 
@@ -34,8 +35,8 @@ public interface RetrofitInterface {
     @POST("/table/mytable")
     Call<List<Table>> executemyTableLoad (@Body HashMap<String, String> map);
 
-    @POST("/club/create")
-    Call<Void> executeClubCreate (@Body HashMap<String, String> map);
+    @PUT("/table/update")
+    Call<Void> executeTableEdit (@Body HashMap<String, String> map);
 
     @HTTP(method = "DELETE", path = "/table/delete", hasBody = true)
     Call<Void> executeTableDelete (@Body HashMap<String, String> map);
@@ -45,6 +46,9 @@ public interface RetrofitInterface {
 
     @POST("/comment/")
     Call<List<Comment>> executeCommentLoad (@Body HashMap<String, String> map);
+
+    @POST("/comment/mycomment")
+    Call<List<Comment>> executemyCommentLoad (@Body HashMap<String, String> map);
 
     @HTTP(method = "DELETE", path = "/comment/delete", hasBody = true)
     Call<Void> executeCommentDelete (@Body HashMap<String, String> map);
