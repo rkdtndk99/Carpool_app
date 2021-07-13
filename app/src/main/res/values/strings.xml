@@ -1,9 +1,5 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">Carpool_app</string>
-=======
     <string name="app_name">EveryClub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> 8e7801ba81851d672d88699446933bb35b36bc52
 </resources>

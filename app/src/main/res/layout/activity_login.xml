@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout
-=======
 <LinearLayout
->>>>>>> 8e7801ba81851d672d88699446933bb35b36bc52
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-<<<<<<< HEAD
     android:layout_height="match_parent">
 
     <ImageView
@@ -90,10 +85,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
-    android:layout_height="match_parent"
-    android:background="@color/colorLoginPrimaryDark">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,4 +97,3 @@
 </LinearLayout>
 
 <!--    tools:context="com.appsnipp.minimallogin.LoginActivity"-->
->>>>>>> 8e7801ba81851d672d88699446933bb35b36bc52

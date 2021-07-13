@@ -7,8 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
-=======
     <color name="light_blue">#A9C6F9</color>
     <color name="blackTextColor">#000</color>
     <color name="colorLoginPrimaryDark">#FDFFFF</color>
@@ -17,5 +15,4 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="lightgray">#808080</color>
->>>>>>> 8e7801ba81851d672d88699446933bb35b36bc52
 </resources>
