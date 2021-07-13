@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import com.example.everyClub.MyClubActivity;
@@ -60,7 +58,7 @@ public class NoticeDetailFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.table_detail, container, false);
+        view = inflater.inflate(R.layout.notice_detail, container, false);
 
         Bundle bundle = getArguments();
         table_id = bundle.getString("tableId");
@@ -166,7 +164,7 @@ public class NoticeDetailFragment extends Fragment {
             public void onFailure(Call<Void> call, Throwable t) {
             }
         });
-
+        comment_et.setText("");
         handleLoadComment();
     }
 

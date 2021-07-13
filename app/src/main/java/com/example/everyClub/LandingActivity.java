@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.everyClub.login.MainActivity;
 
 public class LandingActivity extends AppCompatActivity {
+    private String name, email, pic_uri, birthday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,10 @@ public class LandingActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = getIntent();
-                String name = intent.getStringExtra("name");
-                String email = intent.getStringExtra("email");
-                String pic_uri = intent.getStringExtra("profile_pic");
-                String birthday = intent.getStringExtra("birthday");
-
-                Log.i("name", "print" + name);
+                name = intent.getStringExtra("name");
+                email = intent.getStringExtra("email");
+                pic_uri = intent.getStringExtra("profile_pic");
+                birthday = intent.getStringExtra("birthday");
 
                 Intent intent1 = new Intent(LandingActivity.this, MyClubActivity.class); // 새로운 창을 만들기위한 객체
                 intent1.putExtra("name", name);

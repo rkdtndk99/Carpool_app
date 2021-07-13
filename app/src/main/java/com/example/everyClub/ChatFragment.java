@@ -61,6 +61,13 @@ public class ChatFragment extends Fragment {
         name = bundle.getString("name");
 
         initiateSocketConnection();
+
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MyClubActivity)getActivity()).setFrag(3);
+            }
+        });
         return view;
     }
 
@@ -158,7 +165,22 @@ public class ChatFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        messageEdit.addTextChangedListener((TextWatcher)this);
+        messageEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         sendBtn.setOnClickListener(v -> {
 

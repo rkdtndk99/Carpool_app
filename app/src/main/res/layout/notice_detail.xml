@@ -135,7 +135,7 @@
                 android:id="@+id/reg_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="@color/blue"
                 android:text="등록하기"/>
         </LinearLayout>

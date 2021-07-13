@@ -5,12 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_to_gallery"
+            android:id="@+id/back"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="단체 메시지"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
         android:layout_above="@id/messageEdit"/>
+    </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"
@@ -37,7 +63,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="16dp"
         android:id="@+id/sendBtn"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/blue"
         android:layout_alignParentRight="true" />
 
     <ImageView
@@ -52,5 +78,6 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@id/messageEdit"
         android:layout_alignParentRight="true" />
+
 
 </RelativeLayout>

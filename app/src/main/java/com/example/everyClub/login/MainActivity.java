@@ -26,6 +26,9 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public Retrofit retrofit;
     public RetrofitInterface retrofitInterface;
     public String BASE_URL = "http://192.249.18.147";
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (response.code() == 200) {
 
-//                            LoginResult result = response.body();
+                            LoginResult result = response.body();
 
                             Intent intent = new Intent (getApplicationContext(), LandingActivity.class);
                             intent.putExtra("name", userIdEdit.getText().toString());
+                            intent.putExtra("email", result.getEmail());
                             startActivity(intent);
 
                         } else if (response.code() == 404) {
@@ -153,11 +158,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (response.code() == 200) {
 
                                     Intent intent = new Intent(MainActivity.this, LandingActivity.class);
-                                    String name1 = result.getKakaoAccount().getProfile().getNickname();
-
-                                    Log.i("name1", "print" + name1);
-
-                                    intent.putExtra("name", name1);
+                                    intent.putExtra("name", result.getKakaoAccount().getProfile().getNickname());
                                     intent.putExtra("email", result.getKakaoAccount().getEmail());
                                     intent.putExtra("profile_pic", result.getKakaoAccount().getProfile().getProfileImageUrl());
                                     intent.putExtra("birthday", result.getKakaoAccount().getBirthday());
@@ -182,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, LandingActivity.class);
                         startActivity(intent);
 
-                        Toast.makeText(MainActivity.this, "환영합니다 !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "환영합니다!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
