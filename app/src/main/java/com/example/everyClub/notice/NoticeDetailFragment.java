@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class NoticeDetailFragment extends Fragment {
     ListView listView;
     Integer position;
     String table_id, name;
+    ImageView update;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -59,6 +61,8 @@ public class NoticeDetailFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        KakaoApplication ka = (KakaoApplication) getActivity().getApplicationContext();
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.notice_detail, container, false);
 
@@ -73,6 +77,10 @@ public class NoticeDetailFragment extends Fragment {
         name_tv = view.findViewById(R.id.name_tv);
         date_tv = view.findViewById(R.id.date_tv);
         listView = view.findViewById(R.id.listView);
+        update = view.findViewById(R.id.update);
+
+        if (ka.getUserName() != name)
+            update.setVisibility(View.GONE);
 
         comment_et = view.findViewById(R.id.comment_et);
         reg_button = view.findViewById(R.id.reg_button);
@@ -110,7 +118,8 @@ public class NoticeDetailFragment extends Fragment {
                 Log.d("LONG CLICK", "OnLongClickListener");
                 // 해당 게시물 정보
                 Comment comment = comment_list.get(position);
-                DeleteDialog(comment);
+                if (comment.getName().equals(name))
+                    DeleteDialog(comment);
                 return true;
             }
         });
@@ -130,8 +139,6 @@ public class NoticeDetailFragment extends Fragment {
                 bundle.putString("tableId", table.get_id());
                 bundle.putString("name", name);
                 Log.i("아이디1", "print"+table.get_id());
-//                ((MyClubActivity)getActivity()).ef.setArguments(bundle);
-//                (MyClubActivity)getActivity().
                 KakaoApplication ka = (KakaoApplication) getActivity().getApplicationContext();
                 ka.setUserName(name);
                 ka.setTableId(table.get_id());

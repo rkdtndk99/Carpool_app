@@ -91,7 +91,10 @@ public class NoticeFragment extends Fragment {
                 Log.d("LONG CLICK", "OnLongClickListener");
                 // 해당 게시물 정보
                 Table table = table_list.get(position);
-                noticeDialog(table);
+                Log.i("체크1", "print"+table.getName());
+                Log.i("체크2", "print"+name);
+                if (table.getName().equals(name))
+                    noticeDialog(table);
                 return true;
             }
         });

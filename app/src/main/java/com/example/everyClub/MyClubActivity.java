@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.everyClub.login.KakaoApplication;
 import com.example.everyClub.notice.NewNoticeFragment;
 import com.example.everyClub.notice.NoticeDetailFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,6 +39,9 @@ public class MyClubActivity extends AppCompatActivity {
         pic_uri = intent.getStringExtra("pic_uri");
         birthday =intent.getStringExtra("birthday");
         email = intent.getStringExtra("email");
+
+        KakaoApplication ka = (KakaoApplication) getApplicationContext();
+        ka.setUserName(name);
 
         Log.i("name", "print" + name);
 
