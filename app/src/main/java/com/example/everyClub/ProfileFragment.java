@@ -1,5 +1,8 @@
 package com.example.everyClub;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -49,8 +52,20 @@ public class ProfileFragment extends Fragment {
         p_email.setText(email);
         p_birthday.setText(birthday);
 
-        Glide.with(this).load(pic_uri).into(profile_img);
-
+        if(pic_uri == null){
+            @SuppressLint("UseCompatLoadingForDrawables")
+            BitmapDrawable img = (BitmapDrawable)getResources().getDrawable(R.drawable.user);
+            profile_img.setImageDrawable(img);
+        }else {
+            Glide.with(getActivity()).load(pic_uri).into(profile_img);
+        }
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LandingActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

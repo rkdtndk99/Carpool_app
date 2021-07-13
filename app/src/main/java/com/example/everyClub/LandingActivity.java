@@ -16,6 +16,7 @@ import com.example.everyClub.login.MainActivity;
 public class LandingActivity extends AppCompatActivity {
     String _userId, name, pic_uri, birthday, email;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class LandingActivity extends AppCompatActivity {
                 Log.i("birthday", "primt" + birthday);
                 Intent intent1 = new Intent(getApplicationContext(), MyClubActivity.class); // 새로운 창을 만들기위한 객체
                 intent1.putExtra("_userId", _userId);
+
                 intent1.putExtra("name", name);
                 intent1.putExtra("email", email);
                 intent1.putExtra("pic_uri", pic_uri);

@@ -88,7 +88,6 @@ public class NoticeFragment extends Fragment {
                 bundle.putString("tableId", table.get_id());
                 bundle.putString("name", name);
 
-
                 ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
                 ((MyClubActivity)getActivity()).setFrag(6);
             }
@@ -169,6 +168,7 @@ public class NoticeFragment extends Fragment {
         HashMap<String, String> map = new HashMap<>();
         map.put("tableId", table.get_id());
         map.put("name", name);
+        table_list.remove(table);
 
         Call<Void> call = retrofitInterface.executeTableDelete(map);
 

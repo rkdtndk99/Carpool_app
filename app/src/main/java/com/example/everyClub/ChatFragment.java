@@ -68,6 +68,13 @@ public class ChatFragment extends Fragment implements TextWatcher {
         name = bundle.getString("name");
 
         initiateSocketConnection();
+
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MyClubActivity)getActivity()).setFrag(3);
+            }
+        });
         return view;
     }
 
@@ -164,9 +171,7 @@ public class ChatFragment extends Fragment implements TextWatcher {
         recyclerView.setAdapter(messageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         messageEdit.addTextChangedListener((TextWatcher) this);
-
         sendBtn.setOnClickListener(v -> {
 
             JSONObject jsonObject = new JSONObject();

@@ -13,7 +13,7 @@
         android:padding="8dp"
         android:id="@+id/sentTxt"
         android:textSize="16sp"
-        android:background="#cccccc"
+        android:background="@color/light_blue"
         android:text="Hello this is a sample message"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="64dp" />

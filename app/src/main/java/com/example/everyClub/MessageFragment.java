@@ -1,5 +1,6 @@
 package com.example.everyClub;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,14 @@ public class MessageFragment extends Fragment {
 
                 ((MyClubActivity)getActivity()).cf.setArguments(bundle);
                 ((MyClubActivity)getActivity()).setFrag(5);
+            }
+        });
+
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LandingActivity.class);
+                startActivity(intent);
             }
         });
 
