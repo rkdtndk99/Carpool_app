@@ -43,7 +43,7 @@ public class NoticeDetailFragment extends Fragment {
     Button reg_button;
     ListView listView;
     Integer position;
-    String table_id, name;
+    String table_id, name, tableOwner;
     ImageView update;
 
     private Retrofit retrofit;
@@ -68,6 +68,7 @@ public class NoticeDetailFragment extends Fragment {
 
         Bundle bundle = getArguments();
         table_id = bundle.getString("tableId");
+        tableOwner = bundle.getString("tableOwner");
         name = bundle.getString("name");
         position = bundle.getInt("POSITION");
 
@@ -79,7 +80,9 @@ public class NoticeDetailFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
         update = view.findViewById(R.id.update);
 
-        if (ka.getUserName() != name)
+        Log.i("하하1","print"+tableOwner);
+        Log.i("하하2","print"+name);
+        if (!tableOwner.equals(name))
             update.setVisibility(View.GONE);
 
         comment_et = view.findViewById(R.id.comment_et);

@@ -78,6 +78,7 @@ public class NoticeFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("POSITION", position);
                 bundle.putString("tableId", table.get_id());
+                bundle.putString("tableOwner", table.getName());
                 bundle.putString("name", name);
 
                 ((MyClubActivity)getActivity()).ndf.setArguments(bundle);
