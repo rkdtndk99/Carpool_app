@@ -74,7 +74,6 @@ public class MyPostActivity extends AppCompatActivity {
     }
 
     private void handlemyTableLoad() {
-        Log.i("주형2", "myTable");
         HashMap<String, String> map = new HashMap<>();
         map.put("name", name);
         Log.i("이름", "print"+name);
