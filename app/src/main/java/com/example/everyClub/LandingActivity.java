@@ -2,6 +2,7 @@ package com.example.everyClub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -48,7 +49,9 @@ public class LandingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                name = getIntent().getStringExtra("name");
                 Intent intent2 = new Intent(getApplicationContext(), MyPostActivity.class); // 새로운 창을 만들기위한 객체
+                intent2.putExtra("name", name);
                 startActivity(intent2);
             }
         });

@@ -40,14 +40,6 @@ public class NoticeFragment extends Fragment {
     ListViewAdapter tableAdapter;
     public static List<Table> table_list;
     ListView listView;
-    private FragmentManager fm;
-    private FragmentTransaction ft;
-
-    // 리스트뷰에 사용할 제목 배열
-    ArrayList<String> titleList = new ArrayList<>();
-
-    // 클릭했을 때 어떤 게시물을 클릭했는지 게시물 번호를 담기 위한 배열
-    ArrayList<String> seqList = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

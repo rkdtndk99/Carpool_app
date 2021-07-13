@@ -31,6 +31,9 @@ public interface RetrofitInterface {
     @GET("/table/")
     Call<List<Table>> executeTableLoad ();
 
+    @POST("/table/mytable")
+    Call<List<Table>> executemyTableLoad (@Body HashMap<String, String> map);
+
     @POST("/club/create")
     Call<Void> executeClubCreate (@Body HashMap<String, String> map);
 
